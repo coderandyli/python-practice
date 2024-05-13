@@ -8,6 +8,23 @@ def find_product_price(products, product_id):
             return price
     return None
 
+# 有多少种不同的价格
+def find_unique_price(products):
+    unique_price_list = []
+    for _, price in products:
+        if price not in unique_price_list:
+            unique_price_list.append(price)
+    return len(unique_price_list)
+
+# 有多少种不同的价格(set)
+def find_unique_price_set(products):
+    unique_price_list = set()
+    for _, price in products:
+        if price not in unique_price_list:
+            unique_price_list.add(price)
+    return len(unique_price_list)
+
+
 
 products = [(1, 100),
             (2, 200),
@@ -80,4 +97,32 @@ if __name__ == "__main__":
     # 获取产品价格
     price = find_product_price(products, 1)
     print(price)
+
+    # 获取有多少种不同的价格
+    print(find_unique_price(products))
+
+    # 获取有多少种不同的价格(set版本)
+    print(find_unique_price(products))
+
+    # 计算效率
+    import time
+
+    id = [x for x in range(0, 10000)]
+    price = [x for x in range(20000, 30000)]
+    products = list(zip(id, price))
+
+    # 计算列表版本的时间
+    start_using_list = time.perf_counter()
+    find_unique_price(products)
+    end_using_list = time.perf_counter()
+    print("使用列表耗时:{}".format(end_using_list - start_using_list))
+
+    # 计算字典版本的时间
+    start_using_set = time.perf_counter()
+    find_unique_price_set(products)
+    end_using_set = time.perf_counter()
+    print("使用列表耗时:{}".format(end_using_set - start_using_set))
+
+
+
 
