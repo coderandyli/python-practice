@@ -4,6 +4,8 @@ import operator
 if __name__ == "__main__":
     # lamda 表达式
     square = lambda x: x**2
+    # def square(x):
+    #     return x**2
     print(square(3))
 
     # 列表内部使用

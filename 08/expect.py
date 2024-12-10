@@ -10,24 +10,30 @@ class MyInputError(Exception):
     def __str__(self):
         return ("{} is invalid input".format(repr(self.value)))
 
+class MyException(Exception):
+    def __init__(self, value):
+        self.value = value
+
+    def __str__(self):
+        return "this is a custom exception"
+
 
 if __name__ == "__main__":
     # try except语句
-    try:
-        s = input("输入数字，以,分隔:")
-        num1 = int(s.split(",")[0].strip())
-        num2 = int(s.split(",")[1].strip())
-
-    except ValueError as err:
-        print("值错误:{}".format(err))
-    except Exception as err:
-        print("其它异常:{}".format(err))
-
-    print("继续")
+    # try:
+    #     s = input("输入数字，以,分隔:")
+    #     num1 = int(s.split(",")[0].strip())
+    #     num2 = int(s.split(",")[1].strip())
+    # except ValueError as err:
+    #     print("值错误:{}".format(err))
+    # except Exception as err:
+    #     print("其它异常:{}".format(err))
+    #
+    # print("继续")
 
     # 自定义异常
     try:
-        raise MyInputError(1)
-    except MyInputError as err:
+        raise MyException(1)
+    except MyException as err:
         print("error:{}".format(err))
     print("继续2")

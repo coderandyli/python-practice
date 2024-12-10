@@ -119,7 +119,7 @@ class BOWInvertedIndexEngine(SearchEngineBase):
         for query_word in query_words:
             query_words_index.append(0)
 
-        # 如果某一单词倒序索引，立即返回
+        # 如果没有单词倒序索引，立即返回
         for query_word in query_words:
             if query_word not in self.inverted_index:
                 return []

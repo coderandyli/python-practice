@@ -54,3 +54,18 @@ if __name__ == "__main__":
 
     # 字符串格式化函数
     print("我的名字叫{},年龄{}".format("lzz", str(18)))
+
+    # practice
+    print("---------- practice ----------")
+
+    # format
+    personal_info = "my name is {}, I am {} years old".format("andy", str(18))
+    print(personal_info)
+
+    # split
+    words = personal_info.split(" ")
+    print(len(words))
+    for word in words:
+        print(word)
+
+
