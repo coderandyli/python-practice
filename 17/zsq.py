@@ -1,6 +1,7 @@
 #  装饰器
 import functools
 import time
+from functools import lru_cache
 
 if __name__ == "__main__":
     # 函数作为变量
@@ -21,7 +22,7 @@ if __name__ == "__main__":
         return get_message(message)
     fund("函数嵌套")
 
-    # 闭包
+    # 闭包: 函数的返回值也可以是函数对象
     def func_closure():
         def get_msg(msg):
             print("收到一个消息: {}".format(msg))
@@ -49,8 +50,8 @@ if __name__ == "__main__":
 
     print("------------ 使用functools.wrap ------------")
     def my_decorator2(func):
-        @functools.wraps(func)
-        def wrapper(*args, **kwargs):
+        @functools.wraps(func) # 帮助保留原函数的元信息（也就是将原函数的元信息，拷贝到对应的装饰器函数里）, 不加该注释元信息将不再是原函数
+        def wrapper(*args, **kwargs): # *args, **kwargs 表示接受任意数量和类型的参数
             print("functools的装饰器")
             func(*args, **kwargs)
 
