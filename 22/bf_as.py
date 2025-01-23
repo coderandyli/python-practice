@@ -62,7 +62,6 @@ def cpu_dp(number):
         result += squ[i]
     print("number={}, result={}".format(number, result))
 
-
 def calculate_sums_dp(numbers):
     for number in numbers:
         cpu_dp(number)
